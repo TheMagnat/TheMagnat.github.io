@@ -131,11 +131,12 @@ execButton.addEventListener('click', execution);
 
 
 let autosize = event => {
-	event.preventDefault();
-	return
+
 	let el = event.target;
-	if (event.keyCode == 13){
-		event.preventDefault();
+
+	el.value = el.value.replace(/\r?\n|\r/g, '')
+
+	if (event.inputType == "insertLineBreak"){
 		execution();
 	}
 	else{
@@ -144,10 +145,11 @@ let autosize = event => {
 			el.style.cssText = 'height:' + el.scrollHeight + 'px';
 		}, 0);
 	}
+	
 }
 
 let textarea = document.getElementById("fname");
-textarea.addEventListener('keydown', autosize);
+textarea.addEventListener('input', autosize);
 			 
 
 let main = event => {
