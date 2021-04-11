@@ -98,11 +98,11 @@ let execution = () => {
 
 	switch (command){
 		case "help":
-			addText('commands:', 0, 100, true);
-			addText('#1 MAIN, back to MAIN menuek,dedejjdjidejidejidejiedjideijdeijedijeijjidijeijd djejdjjed', 0, 100, true)
-			addText('#2 PORT, nav to PORT page', 0, 100, true)
-			addText('#3 ABOUT, nav to ABOUT page', 0, 100, true)
-			addText('#4 CONT, nav to CONTACT page', 0, 100, true)
+			addText('commands:', 0, 100, false);
+			addText('#1 MAIN, back to MAIN menuek,dedejjdjidejidejidejiedjideijdeijedijeijjidijeijd djejdjjed', 0, 100, false)
+			addText('#2 PORT, nav to PORT page', 0, 100, false)
+			addText('#3 ABOUT, nav to ABOUT page', 0, 100, false)
+			addText('#4 CONT, nav to CONTACT page', 0, 100, false)
 			addText('#5 STOP, stop all', 0, 100, true)
 			break;
 		case "test":
@@ -131,6 +131,8 @@ execButton.addEventListener('click', execution);
 
 
 let autosize = event => {
+	event.preventDefault();
+	return
 	let el = event.target;
 	if (event.keyCode == 13){
 		event.preventDefault();
