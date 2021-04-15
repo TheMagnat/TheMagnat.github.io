@@ -17,12 +17,14 @@
 				<div class="scanline"></div>
 
 				<div class="buzz_wrapper1">
-					<div class="text1">
+
+					<div id="first"></div>
+<!-- 					<div class="text1">
 						<span1> <div id="msg1"></div> </span1>
 					</div>
 					<div class="scanline1"></div>
 
-					<br /><br /><br /><br />
+					<br /><br /><br /><br /> -->
 					<div id="terminal">
 
 						<!-- Here we add executions -->
@@ -30,7 +32,7 @@
 					</div>				
 
 					<br /><br /><br /><br />
-					<textarea id="fname" rows="1" spellcheck="false" ></textarea>
+					<textarea id="fname" rows="1" spellcheck="false" autofocus></textarea>
 					<br />
 					<input type="submit" id="exec" value="execute" />
 
@@ -43,7 +45,10 @@
 
 		</section>
 			<!-- partial -->
-		<script  src="./script.js"></script>
+
+		<script  src="src/ScrollAnimation.js"></script>
+		<script  src="src/TerminalSquare.js"></script>
+		<script  src="src/main.js"></script>
 
 	</body>
 </html>
