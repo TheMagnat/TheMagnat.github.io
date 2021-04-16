@@ -52,8 +52,8 @@ body{
 @-webkit-keyframes jerkwhole {
   30% {  }
   40% { opacity:1; top:0; left:0;  -webkit-transform:scale(1,1);  -webkit-transform:skew(0,0);}
-  41% { opacity:0.8; top:0px; left:-100px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(50deg,0);}
-  42% { opacity:0.8; top:0px; left:100px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(-80deg,0);}
+  41% { opacity:0.8; top:0px; left:-80px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(50deg,0);}
+  42% { opacity:0.8; top:0px; left:80px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(-80deg,0);}
   43% { opacity:1; top:0; left:0; -webkit-transform:scale(1,1);  -webkit-transform:skew(0,0);}
   65% { }
 }
@@ -132,7 +132,7 @@ textarea{
   font-weight:bold;
 }*/
 
-#exec{
+#exec, #clearButton{
   background-color: transparent;
   color: green;
   border: 2px solid green;
@@ -186,8 +186,22 @@ textarea:focus, input:focus{
   -webkit-filter: blur(2px);
 }
 
-.buzz_wrapper2 span2{
+
+.buzz_wrapper2 .text2 {
+  -webkit-animation: blur 30ms infinite, jerk 50ms infinite, jerkwhole 10s infinite;
+  position:relative;
+}
+
+.buzz_wrapper2 .image {
   -webkit-animation: blur 30ms infinite, jerk 50ms infinite;
+  position:relative;
+}
+
+.clickable {
+
+  color: #00ff44;
+  text-decoration: underline;
+
 }
 
 @-webkit-keyframes blur {
@@ -202,10 +216,6 @@ textarea:focus, input:focus{
 @-webkit-keyframes jerkup {
   50% { top:1px; }
   51% { top:0; }
-}
-.buzz_wrapper2 .text2{
-  -webkit-animation: jerkwhole 10s infinite;
-  position:relative;
 }
 
 

@@ -26,7 +26,7 @@ let showText = (target, message, index, interval) => {
 let terminalDiv = document.getElementById("terminal");
 
 let lines = 0;
-let addText = (message, index, interval, scroll=true) => {
+let addText = (message, index, interval, color="green", scroll=true) => {
 	
 	//Create a new id string
 	let id = "line" + lines++;
@@ -44,6 +44,7 @@ let addText = (message, index, interval, scroll=true) => {
 	let msgDiv = document.createElement("div");
 	msgDiv.setAttribute("id", id);
 	msgDiv.setAttribute("class", "msg")
+	msgDiv.style.color = color;
 
 	//2
 	let scanLine = document.createElement("div");
@@ -71,22 +72,75 @@ let addText = (message, index, interval, scroll=true) => {
 }
 
 
+////DEBUG
+
+let addIm = async (src, index, interval) => {
+	
+	//Create a new id string
+	let id = "line" + lines++;
+
+
+	let buzzDiv = document.createElement("div");
+	buzzDiv.setAttribute("class", "buzz_wrapper2");
+
+	//1
+	let textDiv = document.createElement("div");
+	textDiv.setAttribute("class", "image");
+
+	let span1 = document.createElement("span2");
+
+	//let msgDiv = document.createElement("div");
+	//msgDiv.setAttribute("id", id);
+	//msgDiv.setAttribute("class", "msg")
+	let ima = new Image();
+	ima.setAttribute("id", id);
+	ima.setAttribute("loading", "lazy")
+	ima.setAttribute("src", src)
+	
+	//ima.src = src;
+	ima.style.width = "100%"
+	ima.style.height = "auto"
+
+	//2
+	let scanLine = document.createElement("div");
+	scanLine.setAttribute("class", "scanline2");
+
+	span1.appendChild(ima)
+	textDiv.appendChild(span1)
+
+	buzzDiv.appendChild(textDiv)
+	//buzzDiv.appendChild(scanLine)
+
+	terminalDiv.appendChild(buzzDiv)
+
+	await ima.decode()
+	buzzDiv.style.height = (buzzDiv.scrollHeight - 100)+"px";
+
+}
+
+
+////
+
+
 let clear = () => {
 
 	while (terminalDiv.lastElementChild) {
 		terminalDiv.removeChild(terminalDiv.lastElementChild);
 	}
 
+	addText("> Terminal cleared", 0, 50, "#00bf00", false);
+
 }
 
 
-const execution = () => {
+const execution = executed => {
 
+	if (executed === undefined) {
+		executed = textarea.value;
+		textarea.value = ""
+	}
 
-	let executed = textarea.value;
 	let command = executed.split(" ")[0].toLowerCase();
-	textarea.value = ""
-
 
 	//Special commands
 	if (executed == ""){
@@ -94,18 +148,18 @@ const execution = () => {
 	}
 	else if (executed == "clear"){
 		clear();
-		addText("> Terminal cleared", 0, 50, false);
 		return
 	}
 
 
-	addText('> ' + executed, 0, 50, false);
+	addText('> ' + executed, 0, 50, "#00bf00", false);
 
 	switch (command){
 		case "help":
 			new TerminalSquare(terminalDiv, [
-				{type: "div", group:0, text: "#1 ME - Tell you about myself"},
-				{type: "div", group:1, text: "#2 CLEAR - Clear the terminal"},
+				{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("me"), text: "ME"}, {type: "div", group:0, text: " - Tell you about myself"},
+				{type:"div", group:1, text: "#1 "}, {type:"div", group:1, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:1, text: " - To get my school path"},
+				{type:"div", group:2, text: "#2 "}, {type:"div", group:2, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:2, text: " - Clear the terminal"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -118,10 +172,28 @@ const execution = () => {
 			]);
 			smoothScroll("exec");
 			break;
+
+		case "education":
+			let educDiv = new TerminalSquare(terminalDiv, [
+				{type: "div", group:0, text: "After obtaining my baccalaureate in 2017, I started a bachelor's degree in mathematics at the University of Paris VIII."},
+				{type: "img", group:1, src: "static/paris8.jpg"},
+				{type: "div", group:2, text: "But very quickly I found a passion for computers science and asked to be transferred to a computer science degree in the same faculty. I finished my bachelor's degree in 2020 with highest honour."},
+				{type: "div", group:3, text: "Then I continued in 2020 with the ANDROIDE master's degree (the acronym for \"distributed agents, robotics, operations research, interaction, decision\" in french) in which I am still in the first year."},
+				{type: "img", group:4, src: "static/sorbonne.jpg"},
+			]);
+			smoothScroll(educDiv.getGroupId(2));
+			break;
+
+		case "im":
+			//addIm("static/fleur.jpg", 0, 50);
+			new TerminalSquare(terminalDiv, [
+				{type:"img", group:0, src:"static/fleur.jpg"},
+			]);
+			break;
+
 		case "projects":
+			break;
 
-
-			break;	
 		case "ls":
 		case "cd":
 			addText(command+': Permission denied', 0, 20);
@@ -141,7 +213,11 @@ const execution = () => {
 }
 
 let execButton = document.getElementById("exec");
-execButton.addEventListener('click', execution);
+execButton.addEventListener('click', () => execution());
+
+let clearButton = document.getElementById("clearButton");
+clearButton.addEventListener('click', () => clear());
+
 
 
 let autosize = event => {

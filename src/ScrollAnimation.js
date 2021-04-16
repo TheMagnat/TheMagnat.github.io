@@ -35,7 +35,7 @@ const elmYPosition = eID => {
 }
 
 
-let seconds = 0.5;
+let seconds = 1;
 
 let start = 0;
 let stop = 0;

@@ -18,6 +18,8 @@ class TerminalSquare {
 
 		this.msgDiv = [];
 		
+		//Create a new id string
+		this.id = "square" + TerminalSquare.count++;
 
 		this.parseContent(content);
 
@@ -30,13 +32,10 @@ class TerminalSquare {
 
 	parseContent(content, parent){
 
-		//Create a new id string
-		let id = "square" + TerminalSquare.count++;
-
-
 		content.forEach((cont, index) => {
 
 			let elem = document.createElement(cont.type);
+
 
 			if ("link" in cont) {
 				elem.setAttribute("href", cont.link);
@@ -54,10 +53,30 @@ class TerminalSquare {
 			if ("group" in cont) {
 				group = cont.group;
 			}
+
+			if ("onClick" in cont) {
+
+				elem.addEventListener("click", cont.onClick);
+				elem.setAttribute("class", "clickable");
+
+			}
+
+			let image = false;
+			if ( cont.type === "img") {
+				image = true;
+				elem.setAttribute("src", cont.src);
+				elem.style.width = "100%";
+				elem.style.height = "auto";
+
+			}
+			else{
+
+				//Style
+				elem.style.whiteSpace = "normal";
+				elem.style.display = "inline";
+
+			}
 			
-			//Style
-			elem.style.whiteSpace = "normal";
-			elem.style.display = "inline";
 
 			//Cumulative sum
 			while (this.limitArray.length <= group) {
@@ -75,11 +94,14 @@ class TerminalSquare {
 			//Create the div if needed
 			if (this.msgDiv[group] === undefined) {
 				this.msgDiv[group] = document.createElement("div");
-				this.msgDiv[group].setAttribute("id", id+"_"+group);
-				this.msgDiv[group].setAttribute("class", "msg")
+				this.msgDiv[group].setAttribute("id", this.id+"_"+group);
 			}
 
 			this.msgDiv[group].appendChild(elem);
+
+			if ( image ) {
+				this.msgDiv[group] = elem;;				
+			}
 
 		});
 
@@ -91,7 +113,7 @@ class TerminalSquare {
 			buzzDiv.setAttribute("class", "buzz_wrapper2");
 
 			let textDiv = document.createElement("div");
-			textDiv.setAttribute("class", "text2");
+			
 
 			let span2 = document.createElement("span2");
 
@@ -109,9 +131,31 @@ class TerminalSquare {
 
 			this.parent.appendChild(buzzDiv);
 
+			if ( elem.tagName === "IMG" ) {
+
+				textDiv.setAttribute("class", "image");
+
+				elem.addEventListener("load", event => {
+					buzzDiv.style.height = (buzzDiv.scrollHeight - 100)+"px";
+				});
+
+			}
+			else{
+
+				textDiv.setAttribute("class", "text2");
+
+			}
+
 			buzzDiv.style.height = (buzzDiv.scrollHeight - 100)+"px";
 
 		});
+
+	}
+
+
+	getGroupId(group){
+
+		return this.msgDiv[group].getAttribute("id");
 
 	}
 
