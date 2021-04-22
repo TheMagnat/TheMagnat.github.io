@@ -158,14 +158,15 @@ const execution = executed => {
 		case "help":
 			new TerminalSquare(terminalDiv, [
 				{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("me"), text: "ME"}, {type: "div", group:0, text: " - Tell you about myself"},
-				{type:"div", group:1, text: "#1 "}, {type:"div", group:1, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:1, text: " - To get my school path"},
-				{type:"div", group:2, text: "#2 "}, {type:"div", group:2, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:2, text: " - Clear the terminal"},
+				{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:1, text: " - To get my school path"},
+				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:2, text: " - Clear the terminal"},
 			]);
 			smoothScroll("exec");
 			break;
 
 		case "me":
-			new TerminalSquare(terminalDiv, [
+			new GLShape(terminalDiv);
+			let meDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
 				{type: "div", group:1, text: "Age: 22 years"},
 				{type: "div", group:2, text: "Activity: First year master's student at Sorbonne Université"},
@@ -174,6 +175,7 @@ const execution = executed => {
 			break;
 
 		case "education":
+			new GLShape(terminalDiv);
 			let educDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "After obtaining my baccalaureate in 2017, I started a bachelor's degree in mathematics at the University of Paris VIII."},
 				{type: "img", group:1, src: "static/paris8.jpg"},
@@ -181,7 +183,13 @@ const execution = executed => {
 				{type: "div", group:3, text: "Then I continued in 2020 with the ANDROIDE master's degree (the acronym for \"distributed agents, robotics, operations research, interaction, decision\" in french) in which I am still in the first year."},
 				{type: "img", group:4, src: "static/sorbonne.jpg"},
 			]);
-			smoothScroll(educDiv.getGroupId(2));
+			smoothScroll(educDiv.getGroupId(1));
+			break;
+
+		case "gl":
+			//addIm("static/fleur.jpg", 0, 50);
+			new GLShape(terminalDiv);
+			smoothScroll("exec");
 			break;
 
 		case "im":
@@ -243,16 +251,21 @@ textarea.addEventListener('input', autosize);
 
 const main = event => {
 	
-	showText("#msg", "Terminal", 0, 100);
+	showText("#msg", "Shell client", 0, 100);
 	//showText("#msg1", "My portfolio, type help", 0, 100);
 	//addText("My portfolio, type help", 0, 100);
+
+	new GLShape(document.getElementById("first"));
+
 	new TerminalSquare(document.getElementById("first"), [
 		{type:"div", group:0, text:"Hello and welcome to my computer"},
 		{type:"div", group:1, text:"Here you have access to a large database about me"},
 		{type:"div", group:2, text:"I obviously did not give you access to all the commands, to have the list of those you have :"},
-		{type:"div", group:3, text:"Enter the command \"help\""}
+		{type:"div", group:3, text:"Enter the command "}, {type:"div", group:3, onClick: () => execution("help"), text: "help"}
 	]);
 	//setTimeout(() => textarea.focus(), 500);
+
+
 
 
 	//textarea.focus({ preventScroll: true });

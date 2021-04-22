@@ -1,5 +1,5 @@
 body{
-  background:url("http://www.deleteagency.com/assets/img/pattern.png"); 
+  /*background:url("http://www.deleteagency.com/assets/img/pattern.png"); */
   background-color : black;
   cursor: url("https://i.imgur.com/zkZbB5k.png"), auto;
 }
@@ -52,8 +52,8 @@ body{
 @-webkit-keyframes jerkwhole {
   30% {  }
   40% { opacity:1; top:0; left:0;  -webkit-transform:scale(1,1);  -webkit-transform:skew(0,0);}
-  41% { opacity:0.8; top:0px; left:-80px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(50deg,0);}
-  42% { opacity:0.8; top:0px; left:80px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(-80deg,0);}
+  41% { opacity:0.8; top:0px; left:-100px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(50deg,0);}
+  42% { opacity:0.8; top:0px; left:100px; -webkit-transform:scale(1,1.2);  -webkit-transform:skew(-80deg,0);}
   43% { opacity:1; top:0; left:0; -webkit-transform:scale(1,1);  -webkit-transform:skew(0,0);}
   65% { }
 }

@@ -100,7 +100,8 @@ class TerminalSquare {
 			this.msgDiv[group].appendChild(elem);
 
 			if ( image ) {
-				this.msgDiv[group] = elem;;				
+				this.msgDiv[group] = elem;
+				this.msgDiv[group].setAttribute("id", this.id+"_"+group);		
 			}
 
 		});
@@ -206,5 +207,3 @@ class TerminalSquare {
 
 }
 TerminalSquare.count = 0;
-
-
