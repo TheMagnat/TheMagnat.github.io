@@ -148,9 +148,21 @@ textarea{
   margin: 15px 0px 15px 30px;
 }
 
+#exec:active, #clearButton:active{
+
+  color: #011f00;
+  background-color: green;
+
+}
+
+
+
 textarea:focus, input:focus{
     outline: 0;
 }
+
+
+
 
 /*----------------------*/
 
@@ -201,7 +213,14 @@ textarea:focus, input:focus{
 
   color: #00ff44;
   text-decoration: underline;
+  cursor: url("https://i.imgur.com/q21BHh4.png"), auto;
 
+}
+
+.clickable:hover { 
+  color: #011f00;
+  background-color: green;
+  /*text-decoration: none;*/
 }
 
 @-webkit-keyframes blur {
