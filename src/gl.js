@@ -67,7 +67,7 @@ class GLShape {
 		      // flatShading: true,
 		      shininess: 30,
 		      wireframe : true,
-		      wireframeLinewidth: 10
+		      wireframeLinewidth: 1
 		    });
 		this.object = new THREE.Mesh( geometry, material );
 		this.scene.add( this.object );
@@ -76,9 +76,9 @@ class GLShape {
 		this.light.position.set( 50, 50, 50 );
 		this.scene.add( this.light );
 
-		const ambientLight = new THREE.AmbientLight( 0x404040, 0.4 ); // soft white ambientLight
+		//const ambientLight = new THREE.AmbientLight( 0x404040, 0.4 ); // soft white ambientLight
 		//const ambientLight = new THREE.AmbientLight( 0x404040, 10 ); // soft white ambientLight
-		this.scene.add( ambientLight );
+		//this.scene.add( ambientLight );
 		
 
 		this.camera.position.z = 4;
