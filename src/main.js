@@ -72,56 +72,6 @@ let addText = (message, index, interval, color="green", scroll=true) => {
 }
 
 
-////DEBUG
-
-let addIm = async (src, index, interval) => {
-	
-	//Create a new id string
-	let id = "line" + lines++;
-
-
-	let buzzDiv = document.createElement("div");
-	buzzDiv.setAttribute("class", "buzz_wrapper2");
-
-	//1
-	let textDiv = document.createElement("div");
-	textDiv.setAttribute("class", "image");
-
-	let span1 = document.createElement("span2");
-
-	//let msgDiv = document.createElement("div");
-	//msgDiv.setAttribute("id", id);
-	//msgDiv.setAttribute("class", "msg")
-	let ima = new Image();
-	ima.setAttribute("id", id);
-	ima.setAttribute("loading", "lazy")
-	ima.setAttribute("src", src)
-	
-	//ima.src = src;
-	ima.style.width = "100%"
-	ima.style.height = "auto"
-
-	//2
-	let scanLine = document.createElement("div");
-	scanLine.setAttribute("class", "scanline2");
-
-	span1.appendChild(ima)
-	textDiv.appendChild(span1)
-
-	buzzDiv.appendChild(textDiv)
-	//buzzDiv.appendChild(scanLine)
-
-	terminalDiv.appendChild(buzzDiv)
-
-	await ima.decode()
-	buzzDiv.style.height = (buzzDiv.scrollHeight - 100)+"px";
-
-}
-
-
-////
-
-
 let clear = () => {
 
 	while (terminalDiv.lastElementChild) {
@@ -140,7 +90,8 @@ const execution = executed => {
 		textarea.value = ""
 	}
 
-	let command = executed.split(" ")[0].toLowerCase();
+	let splitedCommand = executed.split(" ");
+	let command = splitedCommand[0].toLowerCase();
 
 	//Special commands
 	if (executed == ""){
@@ -159,7 +110,8 @@ const execution = executed => {
 			new TerminalSquare(terminalDiv, [
 				{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("me"), text: "ME"}, {type: "div", group:0, text: " - Tell you about myself"},
 				{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:1, text: " - To get my school path"},
-				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:2, text: " - Clear the terminal"},
+				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("shader"), text: "SHADER"}, {type: "div", group:2, text: " - Display some of my shaders work"},
+				{type:"div", group:3, text: "#4 "}, {type:"div", group:3, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:3, text: " - Clear the terminal"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -186,14 +138,44 @@ const execution = executed => {
 			smoothScroll(educDiv.getGroupId(1));
 			break;
 
+		case "shader":
+
+			if (splitedCommand.length > 1){
+
+				let firstArg = splitedCommand[1].toLowerCase();
+				switch (firstArg){
+					case "test":
+						new GLShader(terminalDiv, 0);
+						break;
+
+					case "noise":
+						new GLShader(terminalDiv, 1);
+						break;
+
+					default:
+						addText('Shader not found: '+firstArg, 0, 50)
+				}
+
+			}
+			else{
+
+				new TerminalSquare(terminalDiv, [
+					{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("shader noise"), text: "SHADER NOISE"}, {type: "div", group:0, text: " - A combinaison of multiple layers of perlin noise with transparents effects"},
+					{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("shader test"), text: "SHADER TEST"}, {type: "div", group:1, text: " - A test shader, not by myself"},
+				]);
+
+			}
+
+			smoothScroll("exec");
+			break;
+
 		case "gl":
-			//addIm("static/fleur.jpg", 0, 50);
-			new GLShape(terminalDiv);
+			//new GLShape(terminalDiv);
+			new GLShader(terminalDiv);
 			smoothScroll("exec");
 			break;
 
 		case "im":
-			//addIm("static/fleur.jpg", 0, 50);
 			new TerminalSquare(terminalDiv, [
 				{type:"img", group:0, src:"static/fleur.jpg"},
 			]);
@@ -215,7 +197,7 @@ const execution = executed => {
 			}
 			break;
 		default:
-			addText('Command not found: '+command, 0, 50)	
+			addText('Command not found: '+command, 0, 50)
 	}
 
 }

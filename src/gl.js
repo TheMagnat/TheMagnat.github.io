@@ -28,7 +28,7 @@ class GLShape {
 		this.scene = new THREE.Scene();
 		this.camera = new THREE.PerspectiveCamera( 80, canvasWidth / canvasHeight, 0.1, 1000 );
 
-		this.renderer = new THREE.WebGLRenderer( { alpha: true } );
+		this.renderer = new THREE.WebGLRenderer( { alpha: true, antialias: true } );
 		this.renderer.setSize( canvasWidth, canvasHeight );
 		this.renderer.setClearColor( 0x000000, 0 );
 
