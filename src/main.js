@@ -196,6 +196,14 @@ const execution = executed => {
 				addText(command+": no.", 0, 20);	
 			}
 			break;
+		case "julie":
+			new TerminalSquare(terminalDiv, [
+				{type: "h1", group:0, text: "julie"},
+				{type: "p", group:1, text: "Je m'appele julie j'habite a tours j'ai 22 ans je suis toute petite et mignonne et j'ai un chat qui va bientôt dépasser mon poid."},
+				{type: "a", group:2, onClick: () => document.location.href = "http://www.pd.com", text: "mon cv"},
+			]);
+			break;
+
 		default:
 			addText('Command not found: '+command, 0, 50)
 	}
