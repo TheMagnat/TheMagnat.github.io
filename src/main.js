@@ -82,6 +82,17 @@ let clear = () => {
 
 }
 
+let getAge = dateString => {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    return age;
+}
+
 
 const execution = executed => {
 
@@ -120,8 +131,8 @@ const execution = executed => {
 			new GLShape(terminalDiv);
 			let meDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
-				{type: "div", group:1, text: "Age: 22 years"},
-				{type: "div", group:2, text: "Activity: First year master's student at Sorbonne Université"},
+				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years`},
+				{type: "div", group:2, text: "Activity: Last year master's student at Sorbonne Université"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -132,7 +143,7 @@ const execution = executed => {
 				{type: "div", group:0, text: "After obtaining my baccalaureate in 2017, I started a bachelor's degree in mathematics at the University of Paris VIII."},
 				{type: "img", group:1, src: "static/paris8.jpg"},
 				{type: "div", group:2, text: "But very quickly I found a passion for computers science and asked to be transferred to a computer science degree in the same faculty. I finished my bachelor's degree in 2020 with highest honour."},
-				{type: "div", group:3, text: "Then I continued in 2020 with the ANDROIDE master's degree (the acronym for \"distributed agents, robotics, operations research, interaction, decision\" in french) in which I am still in the first year."},
+				{type: "div", group:3, text: "Then I continued in 2020 with the ANDROIDE master's degree (the acronym for \"distributed agents, robotics, operational research, interaction, decision\" in french) in which I am still in for my last year."},
 				{type: "img", group:4, src: "static/sorbonne.jpg"},
 			]);
 			smoothScroll(educDiv.getGroupId(1));
@@ -200,7 +211,7 @@ const execution = executed => {
 			new TerminalSquare(terminalDiv, [
 				{type: "h1", group:0, text: "julie"},
 				{type: "p", group:1, text: "Je m'appele julie j'habite a tours j'ai 22 ans je suis toute petite et mignonne et j'ai un chat qui va bientôt dépasser mon poid."},
-				{type: "a", group:2, onClick: () => document.location.href = "http://www.pd.com", text: "mon cv"},
+				{type: "a", group:2, onClick: () => document.location.href = "http://www.jolie.com", text: "mon cv"},
 			]);
 			break;
 
