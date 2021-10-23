@@ -217,6 +217,14 @@ textarea:focus, input:focus{
 
 }
 
+strong {
+  color: #00f241;
+}
+
+b {
+  color: #00d138;
+}
+
 .clickable:hover { 
   color: #011f00;
   background-color: green;

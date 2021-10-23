@@ -1,16 +1,5 @@
 
 
-//import {TerminalSquare} from 'TerminalSquare.js';
-
-let print = obj => console.log("Print:", obj)
-
-
-
-
-
-
-
-
 let showText = (target, message, index, interval) => {
 	if (index < message.length) {
 		if (target[0] == '#'){
@@ -122,7 +111,8 @@ const execution = executed => {
 				{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("me"), text: "ME"}, {type: "div", group:0, text: " - Tell you about myself"},
 				{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:1, text: " - To get my school path"},
 				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("shader"), text: "SHADER"}, {type: "div", group:2, text: " - Display some of my shaders work"},
-				{type:"div", group:3, text: "#4 "}, {type:"div", group:3, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:3, text: " - Clear the terminal"},
+				{type:"div", group:3, text: "#4 "}, {type:"div", group:3, onClick: () => execution("competition"), text: "COMPETITION"}, {type: "div", group:3, text: " - List of my participation in competitions"},
+				{type:"div", group:4, text: "#5 "}, {type:"div", group:4, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:4, text: " - Clear the terminal"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -132,7 +122,8 @@ const execution = executed => {
 			let meDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
 				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years`},
-				{type: "div", group:2, text: "Activity: Last year master's student at Sorbonne Université"},
+				{type: "div", group:2, text: "Activity: Last year master's student at Sorbonne Université (Paris 6)"},
+				{type: "div", group:3, text: "Project: I am currently looking for an internship as an Optimization and Operational Research engineer"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -143,10 +134,36 @@ const execution = executed => {
 				{type: "div", group:0, text: "After obtaining my baccalaureate in 2017, I started a bachelor's degree in mathematics at the University of Paris VIII."},
 				{type: "img", group:1, src: "static/paris8.jpg"},
 				{type: "div", group:2, text: "But very quickly I found a passion for computers science and asked to be transferred to a computer science degree in the same faculty. I finished my bachelor's degree in 2020 with highest honour."},
-				{type: "div", group:3, text: "Then I continued in 2020 with the ANDROIDE master's degree (the acronym for \"distributed agents, robotics, operational research, interaction, decision\" in french) in which I am still in for my last year."},
+				{type: "div", group:3, text:
+				"Then I continued in 2020 with the ANDROIDE master's degree (the acronym for \
+				\"Distributed Agents, Robotics, Operational Research, Interaction, Decision\" in french) \
+				from Sorbonne Université (Paris 6)."},
+				{type: "div", group:5, text:
+				"I made this choice because during my degree, I discovered a passion for Optimization and \
+				Artificial Intelligence, subjects in which I decided to deepen my knowledge and this master \
+				is a perfect mix between these two areas. \
+				I am still in it for my last year."},
 				{type: "img", group:4, src: "static/sorbonne.jpg"},
 			]);
 			smoothScroll(educDiv.getGroupId(1));
+			break;
+
+		case "competition":
+			new GLShape(terminalDiv);
+			let competDiv = new TerminalSquare(terminalDiv, [
+				{type: "strong", group:0, text: "#1 API8 Contest, 6th Edition"}, {type: "br", group:0},
+				{type: "b", group:0, text: "(Graphical programing competition)"}, {type: "br", group:0},				
+				{type: "div", group:1, text: "Obtained the first place of the track 1 : DemoMaker Giga"}, {type: "br", group:1}, {type: "br", group:1},
+
+				{type: "strong", group:2, text: "#2 SWERC 2019 - 2020"}, {type: "br", group:2},
+				{type: "b", group:2, text: "(Team Algorithmic Programming competition)"}, {type: "br", group:2},
+				{type: "div", group:3, text: "Obtained the 69th place of the competition with my team."},
+
+				{type: "strong", group:4, text: "#3 BattleDev 2021"}, {type: "br", group:4},
+				{type: "b", group:4, text: "(Algorithmic programming competition)"}, {type: "br", group:4},
+				{type: "div", group:5, text: "Obtained the 142nd place of the competition out of 3000 participants."},
+			]);
+			smoothScroll("exec");
 			break;
 
 		case "shader":
@@ -172,7 +189,7 @@ const execution = executed => {
 
 				new TerminalSquare(terminalDiv, [
 					{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("shader noise"), text: "SHADER NOISE"}, {type: "div", group:0, text: " - A combinaison of multiple layers of perlin noise with transparents effects"},
-					{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("shader test"), text: "SHADER TEST"}, {type: "div", group:1, text: " - A test shader, not by myself"},
+					//{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("shader test"), text: "SHADER TEST"}, {type: "div", group:1, text: " - A test shader, not by myself"},
 				]);
 
 			}
