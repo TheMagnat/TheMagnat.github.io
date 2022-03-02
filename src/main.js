@@ -123,7 +123,7 @@ const execution = executed => {
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
 				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years`},
 				{type: "div", group:2, text: "Activity: Last year master's student at Sorbonne Université (Paris 6)"},
-				{type: "div", group:3, text: "Project: I am currently looking for an internship as an Optimization and Operational Research engineer"},
+				{type: "div", group:3, text: "I am currently on an internship at Air France as an Operational Research engineer."},
 			]);
 			smoothScroll("exec");
 			break;
