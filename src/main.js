@@ -109,10 +109,11 @@ const execution = executed => {
 		case "help":
 			new TerminalSquare(terminalDiv, [
 				{type:"div", group:0, text: "#1 "}, {type:"div", group:0, onClick: () => execution("me"), text: "ME"}, {type: "div", group:0, text: " - Tell you about myself"},
-				{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:1, text: " - To get my school path"},
-				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("shader"), text: "SHADER"}, {type: "div", group:2, text: " - Display some of my shaders work"},
-				{type:"div", group:3, text: "#4 "}, {type:"div", group:3, onClick: () => execution("competition"), text: "COMPETITION"}, {type: "div", group:3, text: " - List of my participation in competitions"},
-				{type:"div", group:4, text: "#5 "}, {type:"div", group:4, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:4, text: " - Clear the terminal"},
+				{type:"div", group:1, text: "#2 "}, {type:"div", group:1, onClick: () => execution("contact"), text: "CONTACT"}, {type: "div", group:1, text: " - Get in touch with me"},
+				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:2, text: " - To get my school path"},
+				{type:"div", group:3, text: "#4 "}, {type:"div", group:3, onClick: () => execution("shader"), text: "SHADER"}, {type: "div", group:3, text: " - Display some of my shaders work"},
+				{type:"div", group:4, text: "#5 "}, {type:"div", group:4, onClick: () => execution("competition"), text: "COMPETITION"}, {type: "div", group:4, text: " - List of my participation in competitions"},
+				{type:"div", group:5, text: "#6 "}, {type:"div", group:5, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:5, text: " - Clear the terminal"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -122,8 +123,17 @@ const execution = executed => {
 			let meDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
 				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years`},
-				{type: "div", group:2, text: "Activity: Last year master's student at Sorbonne Université (Paris 6)"},
-				{type: "div", group:3, text: "I am currently on an internship at Air France as an Operational Research engineer."},
+				{type: "div", group:2, text: "Activity: I am currently working as freelance developer."},
+				{type: "div", group:3, text: "You can contact me to propose projects or offers using the "}, {type:"div", group:3, onClick: () => execution("contact"), text: "CONTACT"}, {type: "div", group:3, text: " command."}, //  on an internship at Air France as an Operational Research engineer
+			]);
+			smoothScroll("exec");
+			break;
+
+		case "contact":
+			new GLShape(terminalDiv);
+			let contactDiv = new TerminalSquare(terminalDiv, [
+				{type: "div", group:0, text: "Email: guillaume.magniadas@gmail.com"},
+				//{type: "div", group:1, text: `Phone: +33669420973 (Fr)`},
 			]);
 			smoothScroll("exec");
 			break;
@@ -142,7 +152,7 @@ const execution = executed => {
 				"I made this choice because during my degree, I discovered a passion for Optimization and \
 				Artificial Intelligence, subjects in which I decided to deepen my knowledge and this master \
 				is a perfect mix between these two areas. \
-				I am still in it for my last year."},
+				I finished my master's degree in 2022 with honours."},
 				{type: "img", group:4, src: "static/sorbonne.jpg"},
 			]);
 			smoothScroll(educDiv.getGroupId(1));
