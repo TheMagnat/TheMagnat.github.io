@@ -147,7 +147,7 @@ const execution = executed => {
 			new GLShape(terminalDiv);
 			let meDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
-				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years`},
+				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years old`},
 				{type: "div", group:2, text: "Activity: I am currently working as a software engineer consultant within the "}, {type: "a", group:2, link: "https://sii-group.com", text: "SII Group"}, {type: "div", group:2, text: " and I am on a mission for Dassault Aviation."},
 				{type: "div", group:3, text: "You can contact me to propose projects using the "}, {type:"div", group:3, onClick: () => execution("contact"), text: "CONTACT"}, {type: "div", group:3, text: " command."}, //  on an internship at Air France as an Operational Research engineer
 			]);
