@@ -14,41 +14,34 @@ body{
 }
 ::selection {color:black;background:green;}
 ::-moz-selection {color:black;background:green;}
-.buzz_wrapper{
+.main_buzz_wrapper{
   position:relative;
   width:700px;
   margin:20px auto;
   overflow:hidden;
   padding:100px;
 }
-.scanline{
-  width:100%;
-  display:block;
-  height:4px;
-  position:relative;
-  z-index:3;
-  margin-bottom:5px;
-  opacity:0.1;
-}
-.buzz_wrapper span{
+
+.main_buzz_wrapper span{
   position:absolute;
   -webkit-filter: blur(1px);
   font-size:80px;
   font-family:'Courier new', fixed;
   font-weight:bold;
 }
-.buzz_wrapper span:nth-child(1){
+.main_buzz_wrapper span:nth-child(1){
   color:green;
   margin-left:-2px;
   -webkit-filter: blur(2px);
 }
-.buzz_wrapper span{
+.main_buzz_wrapper span{
   -webkit-animation: blur 30ms infinite, jerk 50ms infinite;
 }
-.buzz_wrapper .text{
+.main_buzz_wrapper .text{
   -webkit-animation: jerkwhole 9.5s infinite;
   position:relative;
 }
+
 @-webkit-keyframes jerkwhole {
   30% {  }
   40% { opacity:1; top:0; left:0;  -webkit-transform:scale(1,1);  -webkit-transform:skew(0,0);}
@@ -59,13 +52,7 @@ body{
 }
 /*---------------------------*/
 
-.buzz_wrapper1{
-  position:relative;
-  width:700px;
-  padding:100px;
-}
-
-.scanline1{
+.scanline{
   width:100%;
   display:block;
   height:4px;
@@ -75,25 +62,14 @@ body{
   opacity:0.1;
 }
 
-.buzz_wrapper1 span1{
-  position:absolute;
-  -webkit-filter: blur(1px);
-  font-size:40px;
-  font-family:'Courier new', fixed;
-  font-weight:bold;
-}
-.buzz_wrapper span1:nth-child(1){
-  color:green;
-  margin-left:-2px;
-  -webkit-filter: blur(2px);
-}
-.buzz_wrapper1 span1{
-  -webkit-animation: blur 30ms infinite, jerk 50ms infinite;/**/
-}
-.buzz_wrapper1 .text1{
-  -webkit-animation: jerkwhole 10s infinite;
+
+.mainBlock{
   position:relative;
+  width:700px;
+  padding:100px;
 }
+
+    
 textarea{
   resize: none;
   background-color: transparent;
@@ -155,18 +131,14 @@ textarea{
 
 }
 
-
-
 textarea:focus, input:focus{
     outline: 0;
 }
 
 
-
-
 /*----------------------*/
 
-.buzz_wrapper2{
+.buzz_wrapper{
   position:relative;
   width:700px;
   margin-left: -50px; /*-25 voor aflopend effect*/
@@ -174,17 +146,8 @@ textarea:focus, input:focus{
   /*overflow:hidden;*/
   padding:50px;
 }
-.scanline2{
-  width:100%;
-  display:block;
-  
-  height:4px;
-  position:relative;
-  z-index:3;
-  margin-bottom:5px;
-  opacity:0.1;
-}
-.buzz_wrapper2 span2{
+
+.buzz_wrapper span{
   position:absolute;
   -webkit-filter: blur(1px);
   font-size:40px;
@@ -192,25 +155,33 @@ textarea:focus, input:focus{
   font-weight:bold;
   color:green;
 }
-.buzz_wrappe2 span2:nth-child(1){
-  color:green;
-  margin-left:-2px;
-  -webkit-filter: blur(2px);
-}
 
-
-.buzz_wrapper2 .text2 {
+.buzz_wrapper .text {
   -webkit-animation: blur 30ms infinite, jerk 50ms infinite, jerkwhole 10s infinite;
   position:relative;
 }
 
-.buzz_wrapper2 .image {
+.buzz_wrapper .image {
   -webkit-animation: blur 30ms infinite, jerk 50ms infinite;
   position:relative;
 }
 
-.clickable {
+.buzz_wrapper_no_space span{
+  position:absolute;
+  -webkit-filter: blur(1px);
+  font-family:'Courier new', fixed;
+  font-weight:bold;
+}
 
+.buzz_wrapper_no_space span{
+  -webkit-animation: blur 30ms infinite, jerk 50ms infinite;
+}
+.buzz_wrapper_no_space .text{
+  -webkit-animation: blur 30ms infinite, jerk 50ms infinite, jerkwhole 10s infinite;
+  position:relative;
+}
+
+.clickable {
   color: #00ff44;
   text-decoration: underline;
   cursor: url("https://i.imgur.com/q21BHh4.png"), auto;
@@ -251,3 +222,39 @@ b {
   width: 1000px;
   font-size: 25px;
 }*/
+
+/*---------footer-----------*/
+.footer {
+  padding: 1% 0;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(7, 7, 7);
+  /*background: linear-gradient(0deg, rgba(7,7,7,1) 83%, rgba(0,0,0,1) 100%);*/
+  color: white;
+  text-align: center;
+}
+
+.footerContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;  
+}
+
+.footerElement {
+  font-size: 2em;
+  padding: 0 0.25vw;
+  margin: 0 0.5vw;
+}
+
+.greenColor {
+  color: green;
+}
+
+a.footerElement {
+  color: #00ff44;
+  text-decoration: underline;
+  cursor: url("https://i.imgur.com/q21BHh4.png"), auto;
+}

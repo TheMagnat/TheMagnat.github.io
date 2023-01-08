@@ -23,9 +23,8 @@ class TerminalSquare {
 
 		this.parseContent(content);
 
-
+		//To animate the elements, we clear the text content then we animate the insertion of each letters
 		this.clearContent();
-
 		this.animate();
 
 	}
@@ -39,12 +38,14 @@ class TerminalSquare {
 
 			if ("link" in cont) {
 				elem.setAttribute("href", cont.link);
+				elem.setAttribute("class", "clickable");
+				elem.setAttribute("target", "_blank");
 			}
 
 			let len = 0;
 			//Content
 			if ("text" in cont) {
-				elem.append(cont.text);
+				elem.append(cont.text); //This line allow the element to take the space it will need to show the whole text
 				elem.setAttribute("text", cont.text);
 				len = cont.text.length;
 			}
@@ -55,7 +56,6 @@ class TerminalSquare {
 			}
 
 			if ("onClick" in cont) {
-
 				elem.addEventListener("click", cont.onClick);
 				elem.setAttribute("class", "clickable");
 
@@ -111,21 +111,21 @@ class TerminalSquare {
 		this.msgDiv.forEach(elem => {
 
 			let buzzDiv = document.createElement("div");
-			buzzDiv.setAttribute("class", "buzz_wrapper2");
+			buzzDiv.setAttribute("class", "buzz_wrapper");
 
 			let textDiv = document.createElement("div");
 			
 
-			let span2 = document.createElement("span2");
+			let span = document.createElement("span");
 
 			//2 - Not mandatory
 			let scanLine = document.createElement("div");
-			scanLine.setAttribute("class", "scanline2");
+			scanLine.setAttribute("class", "scanline");
 
 
-			span2.appendChild(elem);
+			span.appendChild(elem);
 
-			textDiv.appendChild(span2);
+			textDiv.appendChild(span);
 
 			buzzDiv.appendChild(textDiv);
 			buzzDiv.appendChild(scanLine);
@@ -143,7 +143,7 @@ class TerminalSquare {
 			}
 			else{
 
-				textDiv.setAttribute("class", "text2");
+				textDiv.setAttribute("class", "text");
 
 			}
 
@@ -206,4 +206,5 @@ class TerminalSquare {
 	}
 
 }
+
 TerminalSquare.count = 0;

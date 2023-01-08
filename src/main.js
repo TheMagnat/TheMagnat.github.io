@@ -1,4 +1,17 @@
 
+const copyText = textToCopy => {
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText(textToCopy);
+
+  // Alert the copied text
+  //alert(`Copied ${textToCopy} into clipboard.`);
+  //addText(`> Copied ${textToCopy} into clipboard.`, 0, 50, "#00bf00", false);
+
+}
+
+
+
 
 let showText = (target, message, index, interval) => {
 	if (index < message.length) {
@@ -22,29 +35,41 @@ let addText = (message, index, interval, color="green", scroll=true) => {
 
 
 	let buzzDiv = document.createElement("div");
-	buzzDiv.setAttribute("class", "buzz_wrapper2");
+	buzzDiv.setAttribute("class", "buzz_wrapper");
 
 	//1
 	let textDiv = document.createElement("div");
-	textDiv.setAttribute("class", "text2");
+	textDiv.setAttribute("class", "text");
 
-	let span1 = document.createElement("span2");
+	let span = document.createElement("span");
 
 	let msgDiv = document.createElement("div");
 	msgDiv.setAttribute("id", id);
 	msgDiv.setAttribute("class", "msg")
-	msgDiv.style.color = color;
+	//msgDiv.style.color = color;
 
 	//2
 	let scanLine = document.createElement("div");
-	scanLine.setAttribute("class", "scanline2");
+	scanLine.setAttribute("class", "scanline");
 
-	span1.appendChild(msgDiv)
-	textDiv.appendChild(span1)
+	span.appendChild(msgDiv)
+	textDiv.appendChild(span)
 
 	buzzDiv.appendChild(textDiv)
 	//buzzDiv.appendChild(scanLine)
 
+	/*
+		This will create and insert this DOM element:
+			<div class="buzz_wrapper">
+				<div class="text">
+					<span>
+						<div id="{id}" class="msg" style="color: {color};">
+						</div>
+					</span>
+				</div>
+			</div>
+
+	*/
 	terminalDiv.appendChild(buzzDiv)
 
 	if (interval == 0){
@@ -123,8 +148,8 @@ const execution = executed => {
 			let meDiv = new TerminalSquare(terminalDiv, [
 				{type: "div", group:0, text: "Name: MAGNIADAS Guillaume"},
 				{type: "div", group:1, text: `Age: ${getAge("1998/05/25")} years`},
-				{type: "div", group:2, text: "Activity: I am currently working as freelance developer."},
-				{type: "div", group:3, text: "You can contact me to propose projects or offers using the "}, {type:"div", group:3, onClick: () => execution("contact"), text: "CONTACT"}, {type: "div", group:3, text: " command."}, //  on an internship at Air France as an Operational Research engineer
+				{type: "div", group:2, text: "Activity: I am currently working as a software engineer consultant within the "}, {type: "a", group:2, link: "https://sii-group.com", text: "SII Group"}, {type: "div", group:2, text: " and I am on a mission for Dassault Aviation."},
+				{type: "div", group:3, text: "You can contact me to propose projects using the "}, {type:"div", group:3, onClick: () => execution("contact"), text: "CONTACT"}, {type: "div", group:3, text: " command."}, //  on an internship at Air France as an Operational Research engineer
 			]);
 			smoothScroll("exec");
 			break;
@@ -132,8 +157,11 @@ const execution = executed => {
 		case "contact":
 			new GLShape(terminalDiv);
 			let contactDiv = new TerminalSquare(terminalDiv, [
-				{type: "div", group:0, text: "Email: guillaume.magniadas@gmail.com"},
+				{type: "div", group:0, text: "Email:"}, {type: "br", group:0},
+				{type: "a", link: "mailto: guillaume.magniadas@gmail.com", group:0, text: "guillaume.magniadas@gmail.com"},
+				... (navigator.clipboard && window.isSecureContext) ? [{type: "div", group:0, text: ". You can "}, {type: "div", group:0, onClick: () => {copyText("guillaume.magniadas@gmail.com"); addText(`> Copied email into clipboard.`, 0, 50, "#00bf00", false);}, text: "click here"}, {type: "div", group:0, text: " to copy to clipboard."}] : [],
 				//{type: "div", group:1, text: `Phone: +33669420973 (Fr)`},
+				{type: "div", group:1, text: "Github:"}, {type: "br", group:1}, {type: "a", link: "https://github.com/TheMagnat", group:1, text: "github.com/TheMagnat"}, {type: "div", group:1, text: ". Here you can find a large amount of my public projects."}
 			]);
 			smoothScroll("exec");
 			break;
@@ -275,13 +303,26 @@ let autosize = event => {
 
 let textarea = document.getElementById("fname");
 textarea.addEventListener('input', autosize);
-			 
+
+
+const connectFooterLinks = () => {
+
+	footerContactButtonElem = document.getElementById("footerContactButton");
+	footerContactButtonElem.addEventListener("click", event => {
+		execution("contact");
+	});
+
+	footerHelpButtonElem = document.getElementById("footerHelpButton");
+	footerHelpButtonElem.addEventListener("click", event => {
+		execution("help");
+	});
+
+}
+		 
 
 const main = event => {
 	
 	showText("#msg", "Shell client", 0, 100);
-	//showText("#msg1", "My portfolio, type help", 0, 100);
-	//addText("My portfolio, type help", 0, 100);
 
 	new GLShape(document.getElementById("first"));
 
@@ -293,10 +334,9 @@ const main = event => {
 	]);
 	//setTimeout(() => textarea.focus(), 500);
 
-
-
-
 	//textarea.focus({ preventScroll: true });
+
+	connectFooterLinks();
 
 }
 
