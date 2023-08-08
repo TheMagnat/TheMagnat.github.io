@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+Sitemap: https://themagnat.github.io/blog/sitemap.xml

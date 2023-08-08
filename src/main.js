@@ -138,7 +138,8 @@ const execution = executed => {
 				{type:"div", group:2, text: "#3 "}, {type:"div", group:2, onClick: () => execution("education"), text: "EDUCATION"}, {type: "div", group:2, text: " - To get my school path"},
 				{type:"div", group:3, text: "#4 "}, {type:"div", group:3, onClick: () => execution("shader"), text: "SHADER"}, {type: "div", group:3, text: " - Display some of my shaders work"},
 				{type:"div", group:4, text: "#5 "}, {type:"div", group:4, onClick: () => execution("competition"), text: "COMPETITION"}, {type: "div", group:4, text: " - List of my participation in competitions"},
-				{type:"div", group:5, text: "#6 "}, {type:"div", group:5, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:5, text: " - Clear the terminal"},
+				{type:"div", group:5, text: "#6 "}, {type:"div", group:5, onClick: () => execution("blog"), text: "BLOG"}, {type: "div", group:5, text: " - Open my DevBlog and read my developments articles (Currently only available in French)."},
+				{type:"div", group:6, text: "#7 "}, {type:"div", group:6, onClick: () => execution("clear"), text: "CLEAR"}, {type: "div", group:6, text: " - Clear the terminal"},
 			]);
 			smoothScroll("exec");
 			break;
@@ -248,6 +249,10 @@ const execution = executed => {
 			break;
 
 		case "projects":
+			break;
+
+		case "blog":
+			window.location.href = 'https://themagnat.github.io/blog/';
 			break;
 
 		case "ls":

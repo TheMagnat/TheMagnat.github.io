@@ -1,0 +1,133 @@
+baseURL: 'https://themagnat.github.io/blog/'
+languageCode: 'fr-FR'
+title: 'DevBlog de Magnat'
+theme: 'PaperMod'
+
+
+destinationString: "test/"
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+
+languageName: ":fr:"
+languageAltTitle: French
+
+taxonomies:
+  category: categories
+  tag: tags
+  series: series
+
+menu:
+  main:
+    - name: Archive
+      url: archives/
+      weight: 5
+    - name: Recherche
+      url: search/
+      weight: 10
+    - name: Tags
+      url: tags/
+      weight: 10
+    - name: Site personnel
+      url: https://themagnat.github.io/
+
+outputs:
+    home:
+        - HTML
+        - RSS
+        - JSON
+
+params:
+  env: production # to enable google analytics, opengraph, twitter-cards and schema.
+  description: "DevBlog de Magnat - https://themagnat.github.io/"
+  author: Guillaume Magniadas
+
+  defaultTheme: auto
+  # disableThemeToggle: true
+  ShowShareButtons: true
+  ShowReadingTime: true
+  # disableSpecial1stPost: true
+  displayFullLangName: true
+  ShowPostNavLinks: true
+  ShowBreadCrumbs: true
+  ShowCodeCopyButtons: true
+  ShowRssButtonInSectionTermList: true
+  ShowToc: true
+  # comments: false
+  images: ["papermod-cover.png"]
+
+  profileMode:
+    enabled: false
+    title: PaperMod
+    imageUrl: "#"
+    imageTitle: my image
+    # imageWidth: 120
+    # imageHeight: 120
+    buttons:
+      - name: Archives
+        url: archives
+      - name: Tags
+        url: tags
+
+  homeInfoParams:
+    Title: "DevBlog de Magnat"
+    Content: >
+
+      Salut moi c'est **Guillaume** et bienvenue sur mon blog ! 🙂
+
+      - Ici vous pourrez retrouver des articles pour suivre mes avancés sur mes projets personnels,
+        principalement sur mon projet **Mavoxel**, un moteur de *Voxels* 🎲, mais je me réserve aussi le droit de publier des articles sur d'autres sujets (Qui auront sûrement un rapport avec la programmation graphique 😉).  
+
+      - Si vous voulez me contactez, il vous suffit de récupérer mon email disponible sur mon <u>[site personnel](https://themagnat.github.io/)</u> en rentrant la commande **CONTACT**.
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/TheMagnat"
+    - name: website
+      url: "https://themagnat.github.io/"
+
+  editPost:
+    URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+    Text: "Suggest Changes" # edit text
+    appendFilePath: true # to append file path to Edit link
+
+markup:
+    goldmark:
+        renderer:
+            unsafe: true
+    highlight:
+        noClasses: false
+        # anchorLineNos: true
+        # codeFences: true
+        # guessSyntax: true
+        # lineNos: true
+        # style: monokai
+
+privacy:
+  vimeo:
+    disabled: false
+    simple: true
+
+  twitter:
+    disabled: false
+    enableDNT: true
+    simple: true
+
+  instagram:
+    disabled: false
+    simple: true
+
+  youtube:
+    disabled: false
+    privacyEnhanced: true
+
+services:
+  instagram:
+    disableInlineCSS: true
+  twitter:
+    disableInlineCSS: true
