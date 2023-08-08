@@ -22,11 +22,11 @@ Bien sûr, ici nous somme dans un environnement 3D et nous traitons des volumes,
 
 Étant donné qu'il existe une infinité de positions possibles dans un volume, nous allons simplifier la représentation de cet espace en utilisant une boîte alignée avec les axes, système de collision appelé "AABB" pour "Axis Aligned Bounding Box". Il existe d'autre représentation possible mais cette dernière nous convient particulièrement bien dans le cadre de notre moteur de voxels.
 
-{{< img src="/ressources/collisions/AABB_Types.png" align="center">}}
+{{< img src="AABB_Types.png" align="center">}}
 
 Avec ce système, chaque entité possèdera sa boite de collision "AABB" qui se déplacera en même temps qu'elle, et pour vérifier les collisions avec les autres objets il suffira de vérifier leurs boite de collision entrent en intersection.
 
-{{< img src="/ressources/collisions/aabbtoaabb.png" align="center">}}
+{{< img src="aabbtoaabb.png" align="center">}}
 
 ## Algorithme
 
@@ -46,7 +46,7 @@ Après pas mal de temps de réflexion, j'ai commencé à penser à une idée : e
 
 L'idée derrière le ray-casting est assez simple : on part d'une position et on tire un rayon dans une direction donnée et on s'arrête lorsque notre rayon rencontre un obstacle.
 
-{{< img src="/ressources/collisions/raycast_exemple.png" align="center">}}
+{{< img src="raycast_exemple.png" align="center">}}
 
 C'est un algorithme qui est assez souvent utilisé pour faire de l'affichage et calculer de manière assez précise si oui ou non un objet est visible pour l'utilisateur. Cela est aussi utilisé pour voir si une surface est éclairée ou non par une source lumineuse.
 
@@ -67,7 +67,7 @@ Nous allons à chaque collision sauvegarder le déplacement effectué jusqu'à l
 
 Voici un petit schéma pour que vous puissiez essayer de visualiser l'algorithme :
 
-{{< img src="/ressources/collisions/collision_schem.png" align="center">}}
+{{< img src="collision_schem.png" align="center">}}
 
 Ici, les cubes verts représentent notre environnement, le cube rouge représente notre boîte de collision et les flèches bleues représentent les ray-castings effectués !
 
