@@ -1,5 +1,5 @@
 ---
-title: "Collisions"
+title: "Mavoxel - Developement d'un système de Collision"
 summary: Developement d'un system de Collision pour mon moteur de voxels Mavoxel
 date: 2023-08-08T14:53:43+02:00
 series: ["Mavoxel"]
@@ -10,7 +10,7 @@ draft: false
 
 ## Introduction
 
-Cet article est un devlog parlant de l'implémentation d'un système de collision pour mon moteur de voxels Mavoxel.
+Cet article est un devlog parlant de l'implémentation d'un système de collision pour mon moteur de voxels **Mavoxel** 😉.
 
 Le principe d'une collision est assez simple : si une entité est en mouvement, on va s'assurer que la position d'arrivée de cette dernière ne chevauche pas celle d'un autre objet.
 
@@ -20,11 +20,11 @@ Bien sûr, ici nous somme dans un environnement 3D et nous traitons des volumes,
 
 ## AABB
 
-Étant donné qu'il existe une infinité de positions possibles dans un volume, nous allons simplifier la représentation de cet espace en utilisant une boîte alignée avec les axes, système de collision appelé "AABB" pour "Axis Aligned Bounding Box". Il existe d'autre représentation possible mais cette dernière nous convient particulièrement bien dans le cadre de notre moteur de voxels.
+Étant donné qu'il existe une infinité de positions possibles dans un volume, nous allons simplifier la représentation de cet espace en utilisant une boîte alignée avec les axes, système de collision appelé `AABB` pour `Axis Aligned Bounding Box`. Il existe d'autre représentation possible mais cette dernière nous convient particulièrement bien dans le cadre de notre moteur de voxels.
 
 {{< img src="AABB_Types.png" align="center">}}
 
-Avec ce système, chaque entité possèdera sa boite de collision "AABB" qui se déplacera en même temps qu'elle, et pour vérifier les collisions avec les autres objets il suffira de vérifier leurs boite de collision entrent en intersection.
+Avec ce système, chaque entité possédera sa boite de collision `AABB` qui se déplacera en même temps qu'elle, et pour vérifier les collisions avec les autres objets il suffira de vérifier leurs boite de collision entrent en intersection.
 
 {{< img src="aabbtoaabb.png" align="center">}}
 
@@ -40,11 +40,11 @@ En effet, le système que je vous ai présenté au-dessus est en fait assez sati
 
 Mais je n'ai pas envie de me satisfaire d'un système de collision que je trouve imparfait, c'est pourquoi j'ai décidé de chercher une solution !
 
-Après pas mal de temps de réflexion, j'ai commencé à penser à une idée : et si j'utilisais le ray-casting ?
+Après pas mal de temps de réflexion, j'ai commencé à penser à une idée : et si j'utilisais le `ray-casting` ?
 
 ## Ray-Casting
 
-L'idée derrière le ray-casting est assez simple : on part d'une position et on tire un rayon dans une direction donnée et on s'arrête lorsque notre rayon rencontre un obstacle.
+L'idée derrière le `ray-casting` est assez simple : on part d'une position et on tire un rayon dans une direction donnée et on s'arrête lorsque notre rayon rencontre un obstacle.
 
 {{< img src="raycast_exemple.png" align="center">}}
 
@@ -52,11 +52,11 @@ C'est un algorithme qui est assez souvent utilisé pour faire de l'affichage et 
 
 Bref, ici l'idée serait de s'en servir pour savoir si oui ou non notre entité va rencontrer un autre objet.
 
-Et cela tombe bien ! Il se trouve que j'ai déjà implémenté un algorithme de Ray-casting pour mon moteur (code disponible ici) ! Actuellement, il ne me servait qu'à déterminer les objets que l'utilisateur pointe du regard (l'objet au centre de son écran) et rien ne m'empêche de le réutiliser dans mon autre cas de figure.
+Et cela tombe bien ! Il se trouve que j'ai déjà implémenté un algorithme de `Ray-casting` pour mon moteur (code disponible ici) ! Actuellement, il ne me servait qu'à déterminer les objets que l'utilisateur pointe du regard (l'objet au centre de son écran) et rien ne m'empêche de le réutiliser dans mon autre cas de figure.
 
-Problème : Le ray-casting est fait pour tirer un rayon partant d'un point, pas d'un volume (ici notre boîte de collision AABB). Il faut trouver une solution pour adapter l'algorithme à un volume... Et bien pourquoi ne pas effectuer un ray-casting mais en partant de chacun des sommets de notre boîte de collision ?
+Problème : Le `ray-casting` est fait pour tirer un rayon partant d'un point, pas d'un volume (ici notre boîte de collision `AABB`). Il faut trouver une solution pour adapter l'algorithme à un volume... Et bien pourquoi ne pas effectuer un `ray-casting` mais en partant de chacun des sommets de notre boîte de collision ?
 
-C'est donc ce que j'ai décidé d'implémenter ! Mais dans quel ordre ? Comment fait-on un ray-casting de plusieurs points en même temps ? Eh bien, l'idée que j'ai sélectionnée est d'effectuer le ray-casting sur chacun des points de la boite de collision (8 points ici). On pourrait aussi optimiser cela en ne vérifiant que 7 points, car on sait qu'il y en aura toujours un qui sera couvert par les 7 autres, mais c'est un détail. Ensuite, on retient la collision la plus proche obtenue avec ces 8 ray-castings et on recommence en adaptant les entrées, c'est-à-dire les positions de départ des ray-castings et la direction :
+C'est donc ce que j'ai décidé d'implémenter ! Mais dans quel ordre ? Comment fait-on un `ray-casting` de plusieurs points en même temps ? Eh bien, l'idée que j'ai sélectionnée est d'effectuer le `ray-casting` sur chacun des points de la boite de collision (8 points ici). On pourrait aussi optimiser cela en ne vérifiant que 7 points, car on sait qu'il y en aura toujours un qui sera couvert par les 7 autres, mais c'est un détail. Ensuite, on retient la collision la plus proche obtenue avec ces 8 `ray-casting`s et on recommence en adaptant les entrées, c'est-à-dire les positions de départ des `ray-casting`s et la direction :
 
 * Position de départ : On ajoute le déplacement effectué jusqu'à la collision à toutes les positions.
 * Direction : On ajoute le déplacement effectué jusqu'à la collision et on met à 0 la direction dans laquelle on a rencontré la collision.
@@ -69,15 +69,15 @@ Voici un petit schéma pour que vous puissiez essayer de visualiser l'algorithme
 
 {{< img src="collision_schem.png" align="center">}}
 
-Ici, les cubes verts représentent notre environnement, le cube rouge représente notre boîte de collision et les flèches bleues représentent les ray-castings effectués !
+Ici, les cubes verts représentent notre environnement, le cube rouge représente notre boîte de collision et les flèches bleues représentent les `ray-casting`s effectués !
 
 Bon, dit comme ça, ça a l'air simple, mais en pratique, ça donne quoi ? Eh bien, après environ trois semaines de galère en tout genre, principalement due à des problèmes de nombres flottants, de calcul de longueur de vecteurs et d'intersection entre les voxels, l'algorithme fonctionne !
 
 Pour faire simple, les principaux problèmes que j'ai rencontrés pendant ces trois semaines et leurs solutions :
 
-* Que se passe-t-il si l'on commence un Ray-Casting entre deux voxels sur un axe ? Et bien le voxel ayant la coordonnée la plus "grande" sera arbitrairement sélectionné. C'est un comportement qu'on veut à tout prix éviter, car cela veut dire qu'on n'est pas sûr dans cette situation de bien commencer là où l'on veut le ray-casting. J'ai donc ajouté une vérification pour détecter cette situation, et si elle est rencontrée, on va bien préciser que le prochain voxel se trouve à une distance de 0 et on va reculer notre position de 1 dans le sens inverse de notre vecteur de direction. On va aussi rajouter une distance minimale à un voxel pour ne pas coller nos boîtes de collisions à ces derniers.
+* Que se passe-t-il si l'on commence un `ray-casting` entre deux voxels sur un axe ? Et bien le voxel ayant la coordonnée la plus "grande" sera arbitrairement sélectionné. C'est un comportement qu'on veut à tout prix éviter, car cela veut dire qu'on n'est pas sûr dans cette situation de bien commencer là où l'on veut le `ray-casting`. J'ai donc ajouté une vérification pour détecter cette situation, et si elle est rencontrée, on va bien préciser que le prochain voxel se trouve à une distance de 0 et on va reculer notre position de 1 dans le sens inverse de notre vecteur de direction. On va aussi rajouter une distance minimale à un voxel pour ne pas coller nos boîtes de collisions à ces derniers.
 
-* Un autre souci que j'ai rencontré est une erreur basique de calcul de longueur d'un vecteur. En fait, j'estimais mal la distance parcourue pendant un Ray-Casting, ce qui entraînait des situations où je ne détectais pas de collisions et me retrouvais avec des coordonnées à l'intérieur de voxels, chose que je ne pouvais pas ensuite gérer. Mon erreur était que j'additionnais mes déplacements sur tous les axes, et je considérais ensuite cette valeur comme la distance parcourue, sauf que cela ne fonctionne pas ainsi avec des vecteurs. Si j'avance de 1 en x et 1 en y, je n'aurai pas avancé de 2 mais d'environ 1,41... Donc pour calculer cela, rien de mieux que de stocker tous les déplacements sur les axes dans un vecteur et ensuite calculer la longueur de ce dernier pour obtenir la distance parcourue !
+* Un autre souci que j'ai rencontré est une erreur basique de calcul de longueur d'un vecteur. En fait, j'estimais mal la distance parcourue pendant un `ray-casting`, ce qui entraînait des situations où je ne détectais pas de collisions et me retrouvais avec des coordonnées à l'intérieur de voxels, chose que je ne pouvais pas gérer par la suite. Mon erreur était que j'additionnais mes déplacements sur tous les axes, et je considérais ensuite cette valeur comme la distance parcourue, sauf que cela ne fonctionne pas ainsi avec des vecteurs. Si j'avance de 1 en x et 1 en y, je n'aurai pas avancé de 2 mais d'environ 1,41... Donc pour calculer cela, rien de mieux que de stocker tous les déplacements sur les axes dans un vecteur et ensuite calculer la longueur de ce dernier pour obtenir la distance parcourue !
   
 Et voilà, avec tout ça, on dispose d'un algorithme de détection de collision entre nos entités et notre monde fonctionnel !
 

@@ -83,7 +83,7 @@ params:
       - Ici vous pourrez retrouver des articles pour suivre mes avancés sur mes projets personnels,
         principalement sur mon projet **Mavoxel**, un moteur de *Voxels* 🎲, mais je me réserve aussi le droit de publier des articles sur d'autres sujets (Qui auront sûrement un rapport avec la programmation graphique 😉).  
 
-      - Si vous voulez me contactez, il vous suffit de récupérer mon email disponible sur mon <u>[site personnel](https://themagnat.github.io/)</u> en rentrant la commande **CONTACT**.
+      - Si vous voulez me contacter, il vous suffit de récupérer mon email disponible sur mon <u>[site personnel](https://themagnat.github.io/)</u> en entrant la commande **CONTACT**.
 
   socialIcons:
     - name: github
