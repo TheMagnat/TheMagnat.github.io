@@ -7,12 +7,32 @@
 <meta name="robots" content="index, follow">
 <title>Mavoxel - Developement d&#39;un système de Collision | DevBlog de Magnat</title>
 <meta name="keywords" content="Mavoxel, Ray-Casting">
-<meta name="description" content="Developement d&rsquo;un system de Collision pour mon moteur de voxels Mavoxel">
+<meta name="description" content="Je retrace mes réflexions et le development d&rsquo;un system de Collision pour Mavoxel.">
 <meta name="author" content="Guillaume Magniadas">
 <link rel="canonical" href="https://themagnat.github.io/blog/posts/mavoxel/collisions/">
 <link crossorigin="anonymous" href="/blog/assets/css/stylesheet.bf5f9f73cf17311d52cedbcda82c922e91b2f566d88a85ad9f5b5a08b586bd5f.css" integrity="" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/blog/assets/js/highlight.acb54fd32bbc1982428b8850317e45d076b95012730a5936667e6bc21777692a.js" integrity=""
     onload="hljs.initHighlightingOnLoad();"></script>
+
+
+<script type="text/javascript" id="MathJax-script" async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {
+    inlineMath: [['\\(','\\)']],
+    displayMath: [['$$','$$'], ['\[','\]']],
+    processEscapes: true,
+    processEnvironments: true,
+    skipTags: ['script', 'noscript', 'style', 'textarea', 'pre'],
+    TeX: { equationNumbers: { autoNumber: "AMS" },
+         extensions: ["AMSmath.js", "AMSsymbols.js"] }
+  }
+});
+</script>
 <link rel="icon" href="https://themagnat.github.io/blog/favicon.ico">
 <link rel="icon" type="image/png" sizes="16x16" href="https://themagnat.github.io/blog/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://themagnat.github.io/blog/favicon-32x32.png">
@@ -57,18 +77,18 @@
 
     </style>
 </noscript><meta property="og:title" content="Mavoxel - Developement d&#39;un système de Collision" />
-<meta property="og:description" content="Developement d&rsquo;un system de Collision pour mon moteur de voxels Mavoxel" />
+<meta property="og:description" content="Je retrace mes réflexions et le development d&rsquo;un system de Collision pour Mavoxel." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://themagnat.github.io/blog/posts/mavoxel/collisions/" /><meta property="og:image" content="https://themagnat.github.io/blog/papermod-cover.png"/><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2023-08-08T14:53:43+02:00" />
 <meta property="article:modified_time" content="2023-08-08T14:53:43+02:00" />
-
+<meta property="og:see_also" content="https://themagnat.github.io/blog/posts/mavoxel/datarepresentation/" />
 
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://themagnat.github.io/blog/papermod-cover.png"/>
 
 <meta name="twitter:title" content="Mavoxel - Developement d&#39;un système de Collision"/>
-<meta name="twitter:description" content="Developement d&rsquo;un system de Collision pour mon moteur de voxels Mavoxel"/>
+<meta name="twitter:description" content="Je retrace mes réflexions et le development d&rsquo;un system de Collision pour Mavoxel."/>
 
 
 <script type="application/ld+json">
@@ -97,7 +117,7 @@
   "@type": "BlogPosting",
   "headline": "Mavoxel - Developement d'un système de Collision",
   "name": "Mavoxel - Developement d\u0027un système de Collision",
-  "description": "Developement d\u0026rsquo;un system de Collision pour mon moteur de voxels Mavoxel",
+  "description": "Je retrace mes réflexions et le development d\u0026rsquo;un system de Collision pour Mavoxel.",
   "keywords": [
     "Mavoxel", "Ray-Casting"
   ],
@@ -349,6 +369,13 @@
       <li><a href="https://themagnat.github.io/blog/tags/mavoxel/">Mavoxel</a></li>
       <li><a href="https://themagnat.github.io/blog/tags/ray-casting/">Ray-Casting</a></li>
     </ul>
+<nav class="paginav">
+  <a class="prev" href="https://themagnat.github.io/blog/posts/mavoxel/datarepresentation/">
+    <span class="title">« Prev</span>
+    <br>
+    <span>Mavoxel - Représentations en mémoire d&#39;un monde de Voxels</span>
+  </a>
+</nav>
 
 
 <div class="share-buttons">

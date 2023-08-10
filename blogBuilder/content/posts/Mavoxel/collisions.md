@@ -1,6 +1,6 @@
 ---
 title: "Mavoxel - Developement d'un système de Collision"
-summary: Developement d'un system de Collision pour mon moteur de voxels Mavoxel
+summary: Je retrace mes réflexions et le development d'un system de Collision pour Mavoxel.
 date: 2023-08-08T14:53:43+02:00
 series: ["Mavoxel"]
 tags: ["Mavoxel", "Ray-Casting"]

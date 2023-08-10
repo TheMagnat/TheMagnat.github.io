@@ -11,14 +11,23 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-FR</language>
-    <lastBuildDate>Tue, 08 Aug 2023 14:53:43 +0200</lastBuildDate><atom:link href="https://themagnat.github.io/blog/tags/mavoxel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Aug 2023 13:13:55 +0200</lastBuildDate><atom:link href="https://themagnat.github.io/blog/tags/mavoxel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mavoxel - Représentations en mémoire d&#39;un monde de Voxels</title>
+      <link>https://themagnat.github.io/blog/posts/mavoxel/datarepresentation/</link>
+      <pubDate>Wed, 09 Aug 2023 13:13:55 +0200</pubDate>
+      
+      <guid>https://themagnat.github.io/blog/posts/mavoxel/datarepresentation/</guid>
+      <description>Quelle structure de données est la plus adaptée pour représenter un monde fait de Voxels ? Je vous parle de mon choix de structure de données pour Mavoxel.</description>
+    </item>
+    
     <item>
       <title>Mavoxel - Developement d&#39;un système de Collision</title>
       <link>https://themagnat.github.io/blog/posts/mavoxel/collisions/</link>
       <pubDate>Tue, 08 Aug 2023 14:53:43 +0200</pubDate>
       
       <guid>https://themagnat.github.io/blog/posts/mavoxel/collisions/</guid>
-      <description>Developement d&amp;rsquo;un system de Collision pour mon moteur de voxels Mavoxel</description>
+      <description>Je retrace mes réflexions et le development d&amp;rsquo;un system de Collision pour Mavoxel.</description>
     </item>
     
   </channel>
