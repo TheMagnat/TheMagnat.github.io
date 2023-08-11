@@ -59,13 +59,13 @@ params:
   ShowRssButtonInSectionTermList: true
   ShowToc: true
   # comments: false
-  images: ["papermod-cover.png"]
+  images: ["majora.png"]
 
   profileMode:
     enabled: false
-    title: PaperMod
-    imageUrl: "#"
-    imageTitle: my image
+    title: DevBlog de Magnat
+    imageUrl: "majora.png"
+    imageTitle: Magnat
     # imageWidth: 120
     # imageHeight: 120
     buttons:
@@ -92,7 +92,7 @@ params:
       url: "https://themagnat.github.io/"
 
   editPost:
-    URL: "https://github.com/adityatelange/hugo-PaperMod/tree/exampleSite/content"
+    URL: "https://github.com/TheMagnat/TheMagnat.github.io/tree/main/blogBuilder/content"
     Text: "Suggest Changes" # edit text
     appendFilePath: true # to append file path to Edit link
 

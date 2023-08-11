@@ -6,8 +6,8 @@
     <description>Recent content in Tags on DevBlog de Magnat</description>
     <image>
       <title>DevBlog de Magnat</title>
-      <url>https://themagnat.github.io/blog/papermod-cover.png</url>
-      <link>https://themagnat.github.io/blog/papermod-cover.png</link>
+      <url>https://themagnat.github.io/blog/majora.png</url>
+      <link>https://themagnat.github.io/blog/majora.png</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-FR</language>
@@ -27,6 +27,15 @@
       <pubDate>Wed, 09 Aug 2023 13:13:55 +0200</pubDate>
       
       <guid>https://themagnat.github.io/blog/tags/mavoxel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ray-Tracing</title>
+      <link>https://themagnat.github.io/blog/tags/ray-tracing/</link>
+      <pubDate>Wed, 09 Aug 2023 13:13:55 +0200</pubDate>
+      
+      <guid>https://themagnat.github.io/blog/tags/ray-tracing/</guid>
       <description></description>
     </item>
     

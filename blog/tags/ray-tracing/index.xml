@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Mavoxel on DevBlog de Magnat</title>
-    <link>https://themagnat.github.io/blog/tags/mavoxel/</link>
-    <description>Recent content in Mavoxel on DevBlog de Magnat</description>
+    <title>Ray-Tracing on DevBlog de Magnat</title>
+    <link>https://themagnat.github.io/blog/tags/ray-tracing/</link>
+    <description>Recent content in Ray-Tracing on DevBlog de Magnat</description>
     <image>
       <title>DevBlog de Magnat</title>
       <url>https://themagnat.github.io/blog/majora.png</url>
@@ -11,7 +11,7 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>fr-FR</language>
-    <lastBuildDate>Wed, 09 Aug 2023 13:13:55 +0200</lastBuildDate><atom:link href="https://themagnat.github.io/blog/tags/mavoxel/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 09 Aug 2023 13:13:55 +0200</lastBuildDate><atom:link href="https://themagnat.github.io/blog/tags/ray-tracing/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mavoxel - Représentations en mémoire d&#39;un monde de Voxels</title>
       <link>https://themagnat.github.io/blog/posts/mavoxel/datarepresentation/</link>
@@ -19,15 +19,6 @@
       
       <guid>https://themagnat.github.io/blog/posts/mavoxel/datarepresentation/</guid>
       <description>Quelle structure de données est la plus adaptée pour représenter un monde fait de Voxels ? Je vous parle de mon choix de structure de données pour Mavoxel.</description>
-    </item>
-    
-    <item>
-      <title>Mavoxel - Developement d&#39;un système de Collision</title>
-      <link>https://themagnat.github.io/blog/posts/mavoxel/collisions/</link>
-      <pubDate>Tue, 08 Aug 2023 14:53:43 +0200</pubDate>
-      
-      <guid>https://themagnat.github.io/blog/posts/mavoxel/collisions/</guid>
-      <description>Je retrace mes réflexions et le development d&amp;rsquo;un system de Collision pour Mavoxel.</description>
     </item>
     
   </channel>

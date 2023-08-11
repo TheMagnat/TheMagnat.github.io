@@ -3,7 +3,7 @@ title: "Mavoxel - Représentations en mémoire d'un monde de Voxels"
 summary: Quelle structure de données est la plus adaptée pour représenter un monde fait de Voxels ? Je vous parle de mon choix de structure de données pour Mavoxel.
 date: 2023-08-09T13:13:55+02:00
 series: ["Mavoxel"]
-tags: ["Mavoxel", "Data structures"]
+tags: ["Mavoxel", "Data structures", "Ray-Tracing"]
 author: Guillaume Magniadas
 draft: false
 ---
@@ -12,9 +12,9 @@ draft: false
 
 Cet article est un devlog parlant du choix d'une structure de données 📚 pour représenter un monde dans mon moteur de voxels **Mavoxel** 🎲.
 
-Lors du développement d'un projet informatique, on se retrouve très souvent (même toujours) à manipuler une grande quantité de données. Choisir la façon dont on va les stocker est donc une étape importante et risquera d'avoir un fort impact dans la suite des développement. Si dans la plus part des langages haut niveau ce choix se résume à choir entre une `list` ou une `map`, en **C++** ce choix n'est pas aussi simple. Une `list` assure la validité des références sur ses objets même après insertion mais ne permet par d'accéder au à n'importe quel élément en temps constant, et son parcours demande un peu plus de temps qu'une structure de donnée contiguë en mémoire comme un `vector`.
+Lors du développement d'un projet informatique, on se retrouve très souvent (même toujours) à manipuler une grande quantité de données. Choisir la façon dont on va les stocker est donc une étape importante et risquera d'avoir un fort impact dans la suite des développements. Si dans la plus part des langages haut niveau ce choix se résume à choir entre une `list` ou une `map`, en **C++** ce choix n'est pas aussi simple. Une `list` assure la validité des références sur ses objets même après insertion mais ne permet par d'accéder à n'importe quel élément en temps constant et son parcours demande un peu plus de temps qu'une structure de donnée contiguë en mémoire comme un `vector`.
 
-Ici dans le cadre d'un moteur de jeux, quand il va s'agir de données à envoyer au GPU, nous allons quasiment exclusivement utiliser des structures contiguë en mémoire, donc le `vector` de la libraire standard du **C++**.
+Ici dans le cadre d'un moteur de jeux, quand il va s'agir de données à envoyer à notre carte graphique, nous allons quasiment exclusivement utiliser des structures contiguë en mémoire, donc le `vector` de la libraire standard du **C++**.
 
 ---
 
@@ -201,7 +201,7 @@ Maintenant, si je vous disais qu'il existe une représentation qui permet une te
 
 ### Sparsed Voxel Octree
 
-Oula, c'est quoi ce nom barbare me direz vous ? Et bien ça les amis, c'est une structure de données super ingénieuse, qui va nous permettre de réduire drastiquement nos temps de calculs lors d'un **Ray-Casting** mais aussi de réduire la mémoire occupé par nos voxels !
+Oula, c'est quoi ce nom barbare me direz vous ? Et bien ça les amis, c'est une structure de données super ingénieuse, qui va nous permettre de réduire drastiquement nos temps de calculs lors d'un **Ray-Tracing** mais aussi de réduire la mémoire occupé par nos voxels !
 
 Un **Sparsed Voxel Octree** (que l'on appellera dorénavant SVO si ça ne vous dérange pas 😉) est une forme particulière d'**Octree**. Sans rentrer dans les détails, un **Octree** est une structure de données permettant de diviser un espace en plusieurs sous espace, eux même aussi diviser jusqu'à ce que ces sous espace soit complètement vide ou complètement plein.
 
@@ -229,10 +229,10 @@ Voici un petit schéma pour mieux visualiser la logique derrière ce nouvel algo
 
 Il y a quand même toujours deux inconvénients :
 - **Toujours l’accès** : Et oui, comme pour la grille, récupérer la liste complète des voxels présent dans notre **Chunk** sans avoir de `vector` est une tâche coûteuse ! Mais étant donné que nous allons remplacer notre mode de rendu classique par le rendu en **Ray-Tracing**, nous n'aurons plus vraiment besoins de récupérer une telle liste.
-- **Plus lent pour récupérer une optisition** : Contrairement à la grille qui permettait de récupérer instantannément un voxel en fonction d'une position, dans notre **SVO** cet opération est légèrement plus coûteuse, cela reste beaucoup, beaucoup plus rapide qu'avec un simple `vector` et on pourra négliger ce coût, mais il est quand même important de le mentionner.
+- **Plus lent pour récupérer une position** : Contrairement à la grille qui permettait de récupérer instantanément un voxel en fonction d'une position, dans notre **SVO** cet opération est légèrement plus coûteuse, cela reste beaucoup, beaucoup plus rapide qu'avec un simple `vector` et on pourra négliger ce coût, mais il est quand même important de le mentionner.
 
 Mais malgré ces deux points, la structure de données **SVO** reste extrêmement intéressante et nous permet d'obtenir les meilleurs performances en temps réel avec l'algorithme de **Ray-Tracing**, tout en conservant une occupation de la mémoire plus que raisonnable !
 
 Malheureusement et pour votre plus grande tristesse, je n'ai pas de démonstration à vous présenter pour conclure cet article 🥺. En effet il est assez difficile montrer l'implémentation d'une nouvelle structure de données, mais je vais promet que pour le prochain article sur le **Ray-Tracing**, vous pourrez voir à l'oeuvre toute la puissance du **SVO** !
 
-Si vous avez une remarque ou des questions, n'hésitez pas à me contacter, vous pouvez retrouver mon email sur mon site personnel en rentrant la commande `CONTACT` !
+Si vous avez une remarque ou des questions, ou si vous êtes intéressé pour parler un peu plus de l'implémentation du **SVO**, n'hésitez pas à me contacter, vous pouvez retrouver mon email sur mon site personnel en entrant la commande `CONTACT` !
