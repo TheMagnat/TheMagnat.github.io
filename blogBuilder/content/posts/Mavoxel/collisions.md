@@ -5,6 +5,8 @@ date: 2023-08-08T14:53:43+02:00
 series: ["Mavoxel"]
 tags: ["Mavoxel", "Ray-Casting"]
 author: Guillaume Magniadas
+ShowToc: true
+TocOpen: false
 draft: false
 ---
 
@@ -77,7 +79,7 @@ Pour faire simple, les principaux problèmes que j'ai rencontrés pendant ces tr
 
 * Que se passe-t-il si l'on commence un **Ray-Casting** entre deux voxels sur un axe ? Et bien le voxel ayant la coordonnée la plus "grande" sera arbitrairement sélectionné. C'est un comportement qu'on veut à tout prix éviter, car cela veut dire qu'on n'est pas sûr dans cette situation de bien commencer là où l'on veut le **Ray-Casting**. J'ai donc ajouté une vérification pour détecter cette situation, et si elle est rencontrée, on va bien préciser que le prochain voxel se trouve à une distance de 0 et on va reculer notre position de 1 dans le sens inverse de notre vecteur de direction. On va aussi rajouter une distance minimale à un voxel pour ne pas coller nos boîtes de collisions à ces derniers.
 
-* Un autre souci que j'ai rencontré est une erreur basique de calcul de longueur d'un vecteur. En fait, j'estimais mal la distance parcourue pendant un **Ray-Casting**, ce qui entraînait des situations où je ne détectais pas de collisions et me retrouvais avec des coordonnées à l'intérieur de voxels, chose que je ne pouvais pas gérer par la suite. Mon erreur était que j'additionnais mes déplacements sur tous les axes, et je considérais ensuite cette valeur comme la distance parcourue, sauf que cela ne fonctionne pas ainsi avec des vecteurs. Si j'avance de 1 en x et 1 en y, je n'aurai pas avancé de 2 mais d'environ 1,41... Donc pour calculer cela, rien de mieux que de stocker tous les déplacements sur les axes dans un vecteur et ensuite calculer la longueur de ce dernier pour obtenir la distance parcourue !
+* Un autre souci que j'ai rencontré est une erreur basique de calcul de longueur d'un vecteur. En fait, j'estimais mal la distance parcourue pendant un **Ray-Casting**, ce qui entraînait des situations où je ne détectais pas de collisions et me retrouvais avec des coordonnées à l'intérieur de voxels, chose que je ne pouvais pas gérer par la suite. Mon erreur était que j'additionnais mes déplacements sur tous les axes, et je considérais ensuite cette valeur comme la distance parcourue, sauf que cela ne fonctionne pas ainsi avec des vecteurs. Si j'avance de **1** en `x` et **1** en `y`, je n'aurai pas avancé de 2 mais d'environ **1,41**... Donc pour calculer cela, rien de mieux que de stocker tous les déplacements sur les axes dans un vecteur et ensuite calculer la longueur de ce dernier pour obtenir la distance parcourue !
   
 Et voilà, avec tout ça, on dispose d'un algorithme de détection de collision entre nos entités et notre monde fonctionnel !
 

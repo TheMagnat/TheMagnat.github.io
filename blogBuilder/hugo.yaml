@@ -1,10 +1,5 @@
 baseURL: 'https://themagnat.github.io/blog/'
-languageCode: 'fr-FR'
-title: 'DevBlog de Magnat'
 theme: 'PaperMod'
-
-
-destinationString: "test/"
 
 enableInlineShortcodes: true
 enableRobotsTXT: true
@@ -14,27 +9,38 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 
-languageName: ":fr:"
-languageAltTitle: French
+#Langages
+defaultContentLanguage: "fr"
+languages:   
+  fr:
+    languageName: ":fr:"
+    languageAltTitle: French
+    weight: 1
+    title: 'DevBlog de Magnat'
 
-taxonomies:
-  category: categories
-  tag: tags
-  series: series
+    taxonomies:
+      category: categories
+      tag: tags
+      series: series
 
-menu:
-  main:
-    - name: Archive
-      url: archives/
-      weight: 5
-    - name: Recherche
-      url: search/
-      weight: 10
-    - name: Tags
-      url: tags/
-      weight: 10
-    - name: Site personnel
-      url: https://themagnat.github.io/
+    menu:
+      main:
+        - name: Archive
+          url: archives/
+          weight: 5
+        - name: Recherche
+          url: search/
+          weight: 10
+        - name: Tags
+          url: tags/
+          weight: 10
+        - name: Site personnel
+          url: https://themagnat.github.io/
+
+    editPost:
+      URL: "https://github.com/TheMagnat/TheMagnat.github.io/tree/main/blogBuilder/content"
+      Text: "Proposer un changement" # edit text
+      appendFilePath: true # to append file path to Edit link
 
 outputs:
     home:
@@ -90,11 +96,6 @@ params:
       url: "https://github.com/TheMagnat"
     - name: website
       url: "https://themagnat.github.io/"
-
-  editPost:
-    URL: "https://github.com/TheMagnat/TheMagnat.github.io/tree/main/blogBuilder/content"
-    Text: "Suggest Changes" # edit text
-    appendFilePath: true # to append file path to Edit link
 
 markup:
     goldmark:

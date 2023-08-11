@@ -5,6 +5,8 @@ date: 2023-08-09T13:13:55+02:00
 series: ["Mavoxel"]
 tags: ["Mavoxel", "Data structures", "Ray-Tracing"]
 author: Guillaume Magniadas
+ShowToc: true
+TocOpen: false
 draft: false
 ---
 
@@ -233,6 +235,6 @@ Il y a quand même toujours deux inconvénients :
 
 Mais malgré ces deux points, la structure de données **SVO** reste extrêmement intéressante et nous permet d'obtenir les meilleurs performances en temps réel avec l'algorithme de **Ray-Tracing**, tout en conservant une occupation de la mémoire plus que raisonnable !
 
-Malheureusement et pour votre plus grande tristesse, je n'ai pas de démonstration à vous présenter pour conclure cet article 🥺. En effet il est assez difficile montrer l'implémentation d'une nouvelle structure de données, mais je vais promet que pour le prochain article sur le **Ray-Tracing**, vous pourrez voir à l'oeuvre toute la puissance du **SVO** !
+Malheureusement et pour votre plus grande tristesse, je n'ai pas de démonstration à vous présenter pour conclure cet article 🥺. En effet il est assez difficile montrer l'implémentation d'une nouvelle structure de données, mais je vais promet que pour le prochain article sur le **Ray-Tracing**, vous pourrez voir à l'oeuvre toute la puissance du **SVO** couplé avec un algorithme de **Ray-Tracing** !
 
 Si vous avez une remarque ou des questions, ou si vous êtes intéressé pour parler un peu plus de l'implémentation du **SVO**, n'hésitez pas à me contacter, vous pouvez retrouver mon email sur mon site personnel en entrant la commande `CONTACT` !
